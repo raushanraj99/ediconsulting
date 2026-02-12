@@ -5,48 +5,68 @@ import HeroTabs from "@/components/HeroTabs";
 
 export default function HeroSection() {
   return (
-    <section className="relative h-[calc(100vh-88px)] bg-[#1B505B] overflow-hidden">
+    <section className="relative min-h-screen max-[760px]:h-screen bg-[#1B505B] overflow-hidden pt-[88px]">
       {/* Shapes */}
       <div className="absolute top-20 left-20 w-96 h-96 bg-teal-400/10 rounded-full blur-3xl z-0"></div>
       <div className="absolute bottom-20 right-20 w-96 h-96 bg-teal-600/10 rounded-full blur-3xl z-0"></div>
 
       {/* CONTENT */}
-      <div className="container mx-auto px-6 py-16 relative z-20">
-        <div className="gap-12 items-center min-h-[calc(100vh-200px)]">
-          <div className="space-y-8 w-full">
-            <div className="text-white font-serif leading-tight">
-              <h1 className="text-[59px] underline decoration-white decoration-[2px] underline-offset-[4px] [text-decoration-skip-ink:auto]">
+      <div className="container mx-auto px-6 py-16 max-[760px]:px-4 max-[760px]:py-0 max-[760px]:h-[calc(100vh-88px)] max-[760px]:flex max-[760px]:flex-col max-[760px]:overflow-hidden relative z-20">
+        <div className="gap-12 items-center min-h-[calc(100vh-200px)] max-[760px]:min-h-0 max-[760px]:flex max-[760px]:flex-col max-[760px]:h-full">
+          <div className="space-y-8 w-full max-[760px]:space-y-0 max-[760px]:flex max-[760px]:flex-col max-[760px]:h-full">
+            <div className="text-white font-serif leading-tight max-[760px]:text-center max-[760px]:px-2 max-[760px]:pt-4 max-[760px]:flex-shrink-0">
+              <h1 className="text-[59px] md:text-[38px] lg:text-[59px] max-[760px]:text-[24px] max-[760px]:leading-tight underline decoration-white decoration-[2px] underline-offset-[4px] [text-decoration-skip-ink:auto]">
                 EDI Integration
               </h1>
 
-              <h2 className="text-[59px] mt-6">
-                Precision{" "}
-                <span className="underline decoration-white decoration-[2px] underline-offset-[4px] [text-decoration-skip-ink:auto]">
-                  Meets Reliability
-                </span>
+              <h2 className="text-[59px] md:text-[38px] lg:text-[59px] max-[760px]:text-[24px] max-[760px]:leading-tight mt-6 max-[760px]:mt-2">
+                Precision <span className="underline decoration-white decoration-[2px] underline-offset-[4px] [text-decoration-skip-ink:auto]">Meets Reliability</span>
               </h2>
             </div>
 
-            <HeroTabs />
+            {/* IMAGE - Mobile */}
+            <div className="hidden max-[760px]:flex flex-col items-center justify-center relative max-[760px]:mt-3 max-[760px]:flex-shrink-0 max-[760px]:w-[calc(100%+1rem)] max-[760px]:-mr-4">
+              <div className="relative w-full flex justify-center">
+                <Image
+                  src="/client_img_copy.png"
+                  alt="Ather Shahidi"
+                  width={160}
+                  height={200}
+                  className="object-contain max-w-[160px]"
+                  priority
+                />
+                
+                {/* Name Badge - Mobile */}
+                <div className="absolute bottom-[60%] right-0 bg-[#03343D] px-3 py-1 rounded-l-xl">
+                  <p className="text-white text-[18px]" style={{ fontFamily: "Lovers Quarrel, cursive", fontWeight: "400" }}>
+                    Ather Shahidi
+                  </p>
+                </div>
+              </div>
+            </div>
+
+            <div className="max-[760px]:flex-1 max-[760px]:overflow-hidden max-[760px]:flex max-[760px]:flex-col">
+              <HeroTabs />
+            </div>
           </div>
         </div>
       </div>
 
-      {/* IMAGE */}
-      <div className="absolute right-0 top-0 z-10 w-1/2 h-full">
-        <div className="relative h-full flex items-end justify-end">
+      {/* IMAGE - Desktop */}
+      <div className="absolute right-0 top-[88px] bottom-0 z-10 w-1/2 max-[760px]:hidden">
+        <div className="relative flex items-end justify-end">
           <Image
             src="/client_img_copy.png"
             alt="Ather Shahidi"
             width={500}
             height={700}
-            className="object-contain object-bottom h-full"
+            className="object-contain object-bottom h-full md:w-[350px] lg:w-[500px]"
             priority
           />
           
-          {/* Name Badge */}
-          <div className="absolute bottom-16 right-0 bg-[#03343D] px-8 py-4 rounded-l-2xl">
-            <p className="text-white" style={{ fontFamily: "Lovers Quarrel, cursive", fontSize: "56px", fontWeight: "400" }}>
+          {/* Name Badge - Desktop */}
+          <div className="absolute bottom-16 right-0 bg-[#03343D] px-8 py-4 md:px-4 md:py-2 lg:px-8 lg:py-4 rounded-l-2xl">
+            <p className="text-white md:text-[36px] lg:text-[56px]" style={{ fontFamily: "Lovers Quarrel, cursive", fontWeight: "400" }}>
               Ather Shahidi
             </p>
           </div>
