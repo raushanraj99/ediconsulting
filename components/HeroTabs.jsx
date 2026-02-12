@@ -9,6 +9,7 @@ const inriaSans = Inria_Sans({
 
 export default function HeroTabs() {
   const [activeTab, setActiveTab] = useState("edi");
+  const [expandedAccordion, setExpandedAccordion] = useState("edi");
 
   const tabData = {
     edi: [
@@ -30,13 +31,12 @@ export default function HeroTabs() {
   };
 
   return (
-    <div className="mt-10">
-      {/* Tabs */}
-      <div className={`flex gap-2 ${inriaSans.className}`}>
-        {/* Tab 1 */}
+    <div className="mt-10 max-[760px]:mt-0 max-[760px]:flex-1 max-[760px]:flex max-[760px]:flex-col">
+      {/* Desktop Tabs */}
+      <div className={`flex gap-2 ${inriaSans.className} max-[760px]:hidden`}>
         <button
           onClick={() => setActiveTab("edi")}
-          className={`px-8 py-4 rounded-t-2xl font-semibold transition-all duration-300
+          className={`px-8 py-4 md:px-4 md:py-2 md:text-sm lg:px-8 lg:py-4 lg:text-base rounded-t-2xl font-semibold transition-all duration-300
           ${
             activeTab === "edi"
               ? "bg-gray-200 text-black"
@@ -46,10 +46,9 @@ export default function HeroTabs() {
           EDI-PLATFORM
         </button>
 
-        {/* Tab 2 */}
         <button
           onClick={() => setActiveTab("erp")}
-          className={`px-8 py-4 rounded-t-2xl font-semibold transition-all duration-300
+          className={`px-8 py-4 md:px-4 md:py-2 md:text-sm lg:px-8 lg:py-4 lg:text-base rounded-t-2xl font-semibold transition-all duration-300
           ${
             activeTab === "erp"
               ? "bg-gray-200 text-black"
@@ -59,10 +58,9 @@ export default function HeroTabs() {
           ERP SYSTEM
         </button>
 
-        {/* Tab 3 */}
         <button
           onClick={() => setActiveTab("trading")}
-          className={`px-8 py-4 rounded-t-2xl font-semibold transition-all duration-300
+          className={`px-8 py-4 md:px-4 md:py-2 md:text-sm lg:px-8 lg:py-4 lg:text-base rounded-t-2xl font-semibold transition-all duration-300
           ${
             activeTab === "trading"
               ? "bg-gray-200 text-black"
@@ -73,37 +71,114 @@ export default function HeroTabs() {
         </button>
       </div>
 
-      {/* Sub Options Panel */}
+      {/* Desktop Sub Options Panel */}
       <div
         className={`
     ${inriaSans.className}
     bg-[#03343D]
     backdrop-blur-md
     rounded-b-2xl
-    px-8 py-6
+    px-8 py-6 md:px-4 md:py-3 lg:px-8 lg:py-6
     inline-flex flex-wrap   
-    gap-10
+    gap-10 md:gap-5 lg:gap-10
     items-center
     shadow-xl
     transition-all duration-500 ease-in-out
+    max-[760px]:hidden
   `}
       >
         {tabData[activeTab].map((item, i) => (
-          <div key={i} className="flex items-center gap-10">
-            {/* Text */}
+          <div key={i} className="flex items-center gap-10 md:gap-5 lg:gap-10">
             <div>
-              <h3 className="text-white font-semibold tracking-wide">
+              <h3 className="text-white font-semibold tracking-wide md:text-sm lg:text-base">
                 {item.title}
               </h3>
-              <p className="text-white/70 text-sm">{item.desc}</p>
+              <p className="text-white/70 text-sm md:text-xs lg:text-sm">{item.desc}</p>
             </div>
 
-            {/* Divider */}
             {i !== tabData[activeTab].length - 1 && (
-              <div className="h-10 w-[1px] bg-white/30"></div>
+              <div className="h-10 md:h-8 lg:h-10 w-[1px] bg-white/30"></div>
             )}
           </div>
         ))}
+      </div>
+
+      {/* Mobile Accordion */}
+      <div className={`hidden max-[760px]:flex max-[760px]:flex-col ${inriaSans.className} rounded-2xl overflow-hidden`}>
+        {/* EDI Platform Accordion */}
+        <div>
+          <button
+            onClick={() => setExpandedAccordion(expandedAccordion === "edi" ? "edi" : "edi")}
+            className="w-full bg-gray-200 text-black font-bold py-2.5 px-4 text-center text-xs"
+          >
+            EDI-PLATFORM
+          </button>
+          <div className={`overflow-hidden transition-all duration-300 ease-in-out ${
+            expandedAccordion === "edi" ? "max-h-[500px] opacity-100" : "max-h-0 opacity-0"
+          }`}>
+            <div className="bg-[#03343D] px-3 py-2.5">
+              <div className="grid grid-cols-2 gap-x-3 gap-y-2.5">
+                {tabData.edi.map((item, i) => (
+                  <div key={i}>
+                    <h3 className="text-white font-bold text-[10px] mb-0.5">{item.title}</h3>
+                    <p className="text-white/70 text-[9px]">{item.desc}</p>
+                    {i < 2 && <div className="h-[1px] bg-white/30 mt-2.5"></div>}
+                  </div>
+                ))}
+              </div>
+            </div>
+          </div>
+        </div>
+
+        {/* ERP System Accordion */}
+        <div className="border-t border-white/20">
+          <button
+            onClick={() => setExpandedAccordion(expandedAccordion === "erp" ? "edi" : "erp")}
+            className="w-full bg-gray-400/50 text-black font-bold py-2.5 px-4 text-center text-xs"
+          >
+            ERP SYSTEM
+          </button>
+          <div className={`overflow-hidden transition-all duration-300 ease-in-out ${
+            expandedAccordion === "erp" ? "max-h-[500px] opacity-100" : "max-h-0 opacity-0"
+          }`}>
+            <div className="bg-[#03343D] px-3 py-2.5">
+              <div className="grid grid-cols-2 gap-x-3 gap-y-2.5">
+                {tabData.erp.map((item, i) => (
+                  <div key={i}>
+                    <h3 className="text-white font-bold text-[10px] mb-0.5">{item.title}</h3>
+                    <p className="text-white/70 text-[9px]">{item.desc}</p>
+                    {i === 0 && <div className="h-[1px] bg-white/30 mt-2.5"></div>}
+                  </div>
+                ))}
+              </div>
+            </div>
+          </div>
+        </div>
+
+        {/* Trading Partner Accordion */}
+        <div className="border-t border-white/20">
+          <button
+            onClick={() => setExpandedAccordion(expandedAccordion === "trading" ? "edi" : "trading")}
+            className="w-full bg-gray-500/40 text-black font-bold py-2.5 px-4 text-center text-xs rounded-b-2xl"
+          >
+            Trading Partner
+          </button>
+          <div className={`overflow-hidden transition-all duration-300 ease-in-out ${
+            expandedAccordion === "trading" ? "max-h-[500px] opacity-100" : "max-h-0 opacity-0"
+          }`}>
+            <div className="bg-[#03343D] px-3 py-2.5 rounded-b-2xl">
+              <div className="grid grid-cols-2 gap-x-3 gap-y-2.5">
+                {tabData.trading.map((item, i) => (
+                  <div key={i}>
+                    <h3 className="text-white font-bold text-[10px] mb-0.5">{item.title}</h3>
+                    <p className="text-white/70 text-[9px]">{item.desc}</p>
+                    {i === 0 && <div className="h-[1px] bg-white/30 mt-2.5"></div>}
+                  </div>
+                ))}
+              </div>
+            </div>
+          </div>
+        </div>
       </div>
     </div>
   );
