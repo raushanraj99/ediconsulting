@@ -5,14 +5,14 @@ import HeroTabs from "@/components/HeroTabs";
 
 export default function HeroSection() {
   return (
-    <section className="relative min-h-screen max-[760px]:h-screen bg-[#1B505B] overflow-hidden pt-[88px]">
+    <section className="relative bg-[#1B505B] overflow-hidden pt-[88px] md:min-h-screen">
       {/* Shapes */}
       <div className="absolute top-20 left-20 w-96 h-96 bg-teal-400/10 rounded-full blur-3xl z-0"></div>
       <div className="absolute bottom-20 right-20 w-96 h-96 bg-teal-600/10 rounded-full blur-3xl z-0"></div>
 
       {/* CONTENT */}
-      <div className="container mx-auto px-6 py-16 max-[760px]:px-4 max-[760px]:py-0 max-[760px]:h-[calc(100vh-88px)] max-[760px]:flex max-[760px]:flex-col max-[760px]:overflow-hidden relative z-20">
-        <div className="gap-12 items-center min-h-[calc(100vh-200px)] max-[760px]:min-h-0 max-[760px]:flex max-[760px]:flex-col max-[760px]:h-full">
+      <div className="container mx-auto px-6 py-16 max-[760px]:px-4 max-[760px]:py-8 relative z-20 md:min-h-[calc(100vh-88px)] md:flex md:items-center">
+        <div className="gap-12 items-center w-full max-[760px]:flex max-[760px]:flex-col">
           <div className="space-y-8 w-full max-[760px]:space-y-0 max-[760px]:flex max-[760px]:flex-col max-[760px]:h-full">
             <div className="text-white font-serif leading-tight max-[760px]:text-center max-[760px]:px-2 max-[760px]:pt-4 max-[760px]:flex-shrink-0">
               <h1 className="text-[59px] md:text-[38px] lg:text-[59px] max-[760px]:text-[24px] max-[760px]:leading-tight underline decoration-white decoration-[2px] underline-offset-[4px] [text-decoration-skip-ink:auto]">
@@ -53,14 +53,14 @@ export default function HeroSection() {
       </div>
 
       {/* IMAGE - Desktop */}
-      <div className="absolute right-0 top-[88px] bottom-0 z-10 w-1/2 max-[760px]:hidden">
-        <div className="relative flex items-end justify-end">
+      <div className="absolute right-0 top-[88px] z-10 w-1/2 max-[760px]:hidden h-[calc(100vh-88px)]">
+        <div className="relative flex items-end justify-end h-full">
           <Image
             src="/client_img_copy.png"
             alt="Ather Shahidi"
             width={500}
             height={700}
-            className="object-contain object-bottom h-full md:w-[350px] lg:w-[500px]"
+            className="object-contain object-bottom max-h-full md:w-[350px] lg:w-[500px]"
             priority
           />
           
