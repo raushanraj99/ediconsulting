@@ -38,7 +38,7 @@ export default function HeroSection() {
             <div className="hidden max-[760px]:flex flex-col items-center justify-center relative max-[760px]:mt-3 max-[760px]:flex-shrink-0">
               <div className="relative w-full flex justify-center">
                 <Image
-                  src="/client_img_copy.png"
+                  src="/client_img.png"
                   alt="Ather Shahidi"
                   width={160}
                   height={200}
